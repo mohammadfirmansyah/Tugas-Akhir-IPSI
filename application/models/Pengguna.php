@@ -70,14 +70,17 @@ class Pengguna extends CI_Model
         }
   }
 
+  //Mengecek apakah pengguna sudah login
   public function checkLogin() {
-      if(empty($this->session->userdata('is_login')))
-      {
-			redirect('Login');
-		  }
-    }
-
+    if(empty($this->session->userdata('is_login')))
+    {
+		redirect('Login');
+		}
+  }
+  
+  //Mendapatkan id pengguna 
   public function getIdByEmail($email) {
-    
+    $this->db->select('idUsers');
+    return $this->db->get_where($this->table3, array('email' => $email))->row();
   }
 }

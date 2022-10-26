@@ -76,4 +76,8 @@ class Pengguna extends CI_Model
 			redirect('Login');
 		  }
     }
+
+  public function getIdByEmail($email) {
+    
+  }
 }

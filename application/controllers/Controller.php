@@ -131,7 +131,8 @@ class Controller extends CI_Controller
   {
     $data["title"] = "DISMA Dashboard";
     $email = $this->session->userdata('email'); 
-    $data['List_Pertanyaan'] = $this->Pertanyaan->getAllPertanyaan($email);
+    $id = $this->Pengguna->getIdByEmail($email);
+    $data['List_Pertanyaan'] = $this->Pertanyaan->getAllPertanyaan($id);
     $this->load->view('Dashboard', $data);
   }
 }

@@ -1,0 +1,33 @@
+.page-title {
+  color: #125159;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 48px;
+  font-size: 32px;
+}
+
+.horizontal-card {
+  border: 2px dashed #909A9B;
+  border-radius: 20px;
+}
+
+.umkm-description {
+  background: #D9D9D9;
+  border-radius: 15px;
+}
+
+.card-text {
+  text-align: justify;
+}
+
+#shopee-link {
+  border: 1px solid #125159;
+  border-radius: 16px;
+}
+
+#whatsapp-link {
+  background: #125159;
+  border: 1px solid #125159;
+  border-radius: 16px;
+  color: #fff;
+}

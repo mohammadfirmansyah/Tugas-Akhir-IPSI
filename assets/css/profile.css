@@ -1,0 +1,124 @@
+.page-title {
+    color: #125159;
+    font-weight: 600;
+    font-style: normal;
+    line-height: 48px;
+    font-size: 32px;
+}
+
+.sub-title {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px;
+    color: #000;
+}
+
+.card-text {
+    font-style: normal;
+    font-weight: 700;
+    color: #125159;
+}
+
+.title-text {
+    font-size: 1.5vw;
+    -webkit-text-stroke: 1px #DFE5E6;
+}
+
+.card-img-overlay {
+    padding-top: 2.5vw;
+}
+
+@media screen and (max-width:767px) {
+    .title-text {
+        font-size: 10px !important;
+        -webkit-text-stroke: 0.3px #DFE5E6 !important;
+    }
+}
+
+@media screen and (max-width:1440px) {
+    .title-text {
+        font-size: 2vw;
+    }
+    .card-img-overlay {
+        padding-top: calc(6.5vw - 1vh);
+    }
+}
+
+h1 {
+    margin: 0;
+    font-size: 4.5em;
+    padding: 0;
+    color: white;
+    text-shadow: 0 0.1em 20px rgba(0, 0, 0, 1), 0.05em -0.03em 0 rgba(0, 0, 0, 1), 0.05em 0.005em 0 rgba(0, 0, 0, 1), 0em 0.08em 0 rgba(0, 0, 0, 1), 0.05em 0.08em 0 rgba(0, 0, 0, 1), 0px -0.03em 0 rgba(0, 0, 0, 1), -0.03em -0.03em 0 rgba(0, 0, 0, 1), -0.03em 0.08em 0 rgba(0, 0, 0, 1), -0.03em 0 0 rgba(0, 0, 0, 1);
+}
+
+@media screen and (max-width:500px) {
+    h1 {
+        font-size: 3em !important;
+    }
+    h1 #first {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    h1 #second {
+        content: "\a";
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    h1 #third {
+        content: "\a";
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    h1 #four {
+        content: "\a";
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+h1 span {
+    transform: scale(0.9);
+    display: inline-block;
+}
+
+h1 span:nth-child(1) {
+    animation: bop 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards infinite alternate;
+}
+
+h1 span:nth-child(2) {
+    animation: bopB 1s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards infinite alternate;
+}
+
+h1 span:nth-child(3) {
+    animation: bopB 1s 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards infinite alternate;
+}
+
+h1 span:nth-child(4) {
+    animation: bopB 1s 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards infinite alternate;
+}
+
+@keyframes bop {
+    0% {
+        transform: scale(0.9);
+    }
+    50%,
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes bopB {
+    0% {
+        transform: scale(0.9);
+    }
+    80%,
+    100% {
+        transform: scale(1) rotateZ(-3deg);
+    }
+}

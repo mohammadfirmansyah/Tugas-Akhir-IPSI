@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #DFE5E6;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+
+/* NAVBAR */
+
+.navbar {
+    background: #125159;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+span.navbar-title {
+    font-weight: 600;
+    color: #DFE5E6;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    font-size: 1.6vw;
+    line-height: 36px;
+}
+
+.brand-img {
+    width: 5vw;
+    height: auto;
+}
+
+.custom-toggler.navbar-toggler {
+    border-color: lightgreen;
+}
+
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 128, 0, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+navbar-menu {
+    font-size: 24px;
+}
+
+.nav-link {
+    color: #DFE5E6;
+}
+
+@media screen and (max-width:991px) {
+    span.navbar-title {
+        font-size: 15px !important;
+    }
+    .brand-img {
+        width: 40px;
+    }
+}
+
+
+/* End of NAVBAR */
+
+
+/* ========= FOOTER ========= */
+
+footer {
+    background: #346A70;
+}
+
+.footer-top {
+    color: #DFE5E6;
+}
+
+#footer-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#logo {
+    width: 200px;
+    height: 195.04px;
+}
+
+.title-followus {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 27px;
+}
+
+#social-media {
+    list-style: none;
+    margin-left: -30px;
+}
+
+#social-media-icons {
+    color: #DFE5E6;
+    text-decoration: none;
+}
+
+.title-contacts {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 27px;
+}
+
+.contacts {
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 27px;
+}
+
+.footer-bottom {
+    color: #DFE5E6;
+    font-weight: 400;
+    font-size: 15px;
+}
+
+#copyright {
+    padding: 20px;
+}
+
+
+/* Pop Up Gambar */
+
+#images {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#images:hover {
+    opacity: 0.7;
+}
+
+
+/* The Modal (background) */
+
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 15%;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.75);
+    /* Black w/ opacity */
+}
+
+
+/* Modal Content (image) */
+
+.modal-content {
+    margin: auto;
+    display: block;
+    transform: scale(2);
+    width: auto;
+    height: auto;
+    max-width: 600px;
+    max-height: 300px;
+    background-color: transparent;
+}
+
+
+/* Add Animation */
+
+.modal-content {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+    from {
+        -webkit-transform: scale(0)
+    }
+    to {
+        -webkit-transform: scale(2)
+    }
+}
+
+@keyframes zoom {
+    from {
+        transform: scale(0)
+    }
+    to {
+        transform: scale(2)
+    }
+}
+
+
+/* The Close Button */
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+/* 100% Image Width on Smaller Screens */
+
+@media only screen and (max-width: 500px) {
+    .modal-content {
+        margin-top: 60%;
+        width: auto;
+        height: auto;
+        max-height: 350px;
+        max-width: 175px;
+        transform: scale(2);
+        background-color: transparent;
+    }
+    .close {
+        margin-top: 10%;
+    }
+}
+
+
+/* End of FOOTER */

@@ -1,0 +1,47 @@
+.page-title {
+    color: #125159;
+    font-weight: 600;
+    font-style: normal;
+    line-height: 48px;
+    font-size: 32px;
+}
+
+@media only screen and (max-width: 400px) {
+    .page-title {
+        font-size: 2.3vh;
+        margin-left: -40px;
+    }
+    .has-search {
+        margin-top: 20px;
+        margin-left: 20px;
+    }
+}
+
+.left {
+    font-style: normal;
+    font-weight: 600;
+    line-height: 48px;
+}
+
+.right {
+    color: #346A70;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.right:hover {
+    color: #346a70;
+}
+
+.card-img-top {
+    border-radius: 20px;
+}
+
+.card-img-top {
+    border-radius: 20px;
+}
+
+.card-header {
+    height: 225px;
+}

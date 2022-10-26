@@ -5,6 +5,7 @@ Sistem Informasi Tanya Jawab Untuk Ranah Siswa dan Guru (DISMA : Diskusi Maya) a
 Pengguna yang menggunakan website DISMA adalah siswa dan guru dari jenjang sekolah dasar sampai sekolah menengah atas/kejuruan. Siswa dan guru diharuskan untuk mendaftarkan diri untuk bisa menggunakan fitur pada website DISMA. Siswa diharuskan memasukkan NISN dan nomor handphone saat mendaftar untuk memastikan tidak ada siswa palsu yang mendaftar pada website DISMA. Guru diwajibkan menyertakan NIP dan nomor handphone ketika mendaftar untuk memastikan guru merupakan seseorang yang memiliki kapabilitas untuk menjawab pertanyaan siswa.
 
 Guru maupun siswa bisa menggunakan produk DISMA untuk mendukung kegiatan pembelajaran sehari-hari. Siswa yang merasa kebingungan dengan materi pelajaran, ketika dirumah bisa bertanya kepada guru tanpa harus merasa minder dengan teman sekelasnya. Siswa lainnya juga akan tertolong dengan pertanyaan yang diberikan oleh temannya. Guru bisa menjawab pertanyaan dari siswanya dimana saja serta bisa mengetahui siapa siswa yang aktif bertanya. Alur dari sistem ini dimulai dari guru membuat suatu grup kelas. Kemudian siswa akan bergabung pada grup. Siswa kemudian bertanya dengan menekan tombol (+?) pada dashboard website. Siswa lalu memberikan deskripsi pertanyaannya, memasukkan identitas materi yang ditanyakan, dan memilih siapa guru yang akan menjawab pertanyaan. Guru akan mendapatkan notifikasi dari email apabila ada siswa yang memberikan pertanyaan. Guru kemudian akan pergi ke dashboard dan memilih pertanyaan dan menjawabnya. Semua siswa bisa memberikan komentar dari jawaban yang diberikan oleh guru.
+
 <br>
 Desain UI: https://www.figma.com/file/eBLUstpKUK6CGdpvXjWFuo/UI-DISMA?node-id=1%3A2603
 <br>
@@ -22,4 +23,5 @@ UI Designer:
 3. Imam Suprayogo
 4. Rafi’ Arya Siregar
 
-Copyright &copy; 2022. Made by Kelompok 4 IPSI PTI 2022. All Rights Reserved.
+Copyright &copy; 2022. Made by Kelompok 4 IPSI PTI 2022. 
+All Rights Reserved.

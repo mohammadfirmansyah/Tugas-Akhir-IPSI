@@ -129,10 +129,117 @@ class Controller extends CI_Controller
 
   public function Dashboard()
   {
-    $data["title"] = "DISMA Dashboard";
-    $email = $this->session->userdata('email'); 
-    $id = $this->Pengguna->getIdByEmail($email);
-    $data['List_Pertanyaan'] = $this->Pertanyaan->getAllPertanyaan($id);
+    $data["title"] = "Selamat Datang di DISMA";
+    $email = $this->session->userdata('email');
+    $idSiswa = $this->Pengguna->getIdByEmailSiswa($email);
+    $idGuru = $this->Pengguna->getIdByEmailGuru($email);
+    if (!empty($idSiswa)) {
+      $data['List_Pertanyaan'] = $this->Pertanyaan->getAllPertanyaanSiswa($idSiswa);
+    } else {
+      $data['List_Pertanyaan'] = $this->Pertanyaan->getAllPertanyaanGuru($idGuru);
+    }
     $this->load->view('Dashboard', $data);
   }
+
+  public function addPertanyaan()
+  {
+    $data["title"] = "Tambah Pertanyaan";
+    $email = $this->session->userdata('email');
+    $idSiswa = $this->Pengguna->getIdByEmailSiswa($email);
+    $idKelas = $this->Kelas->getidKelasSiswa($idSiswa);
+    $data['List_Guru'] = $this->Kelas->getAllGuruSiswa($idKelas);
+    $this->load->view('addPertanyaan', $data);
+  }
+
+  public function addPertanyaan_process()
+  {
+    //Melakukan validasi data masukan pengguna
+    $this->form_validation->set_rules('judulMateri', 'judulMateri','trim|required|min_length[1]|max_length[255]');
+		$this->form_validation->set_rules('deskripsiPertanyaan', 'deskripsiPertanyaan','trim|required|min_length[1]|max_length[255]');
+		if ($this->form_validation->run() == true)
+	   	{
+      //Mengambil data masukan pengguna
+			$judulMateri = $this->input->post('judulMateri');
+			$deskripsiPertanyaan = $this->input->post('deskripsiPertanyaan');
+			$email = $this->session->userdata('email');
+      $idSiswa = $this->Pengguna->getIdByEmailSiswa($email);
+      $idGuru = $this->input->post('idGuru');
+      $waktuKirim = $this->input->post('waktuKirim');
+      //Menyimpan data masukan pengguna dan menampilkan pesan berhasil
+			$this->Pertanyaan->addPertanyaan($idGuru, $idSiswa, $deskripsiPertanyaan, $judulMateri, $waktuKirim);
+      $this->session->set_flashdata('success_register','Pertanyaan Berhasil Dikirimkan');
+      redirect('Dashboard');
+		}
+		else
+		{
+      //Data masukan pengguna belum lengkap
+			$this->session->set_flashdata('error', validation_errors());
+			redirect('addPertanyaan');
+		}
+  }
+
+  public function detailPertanyaan($idPertanyaan)
+  {
+    $data["title"] = $this->Pertanyaan->getJudulMateriById($idPertanyaan);
+    $data['Data_Pertanyaan'] = $this->Pertanyaan->getPertanyaan($idPertanyaan);
+    $email = $this->session->userdata('email');
+    $idSiswa = $this->Pengguna->getIdByEmailSiswa($email);
+    if (!empty($idSiswa)) {
+      $this->load->view('detailPertanyaanSiswa', $data);
+    } else {
+      $this->load->view('detailPertanyaanGuru', $data);
+    }
+  }
+
+  public function sendJawaban_process()
+  {
+    //Melakukan validasi data masukan pengguna
+		$this->form_validation->set_rules('deskripsiJawaban', 'deskripsiJawaban','trim|required|min_length[1]|max_length[255]');
+		if ($this->form_validation->run() == true)
+	   	{
+      //Mengambil data masukan pengguna
+			$idPertanyaan = $this->input->post('idPertanyaan');
+      $email = $this->session->userdata('email');
+      $idGuru = $this->Pengguna->getIdByEmailGuru($email);
+      $deskripsiPertanyaan = $this->input->post('deskripsiPertanyaan');
+      $waktuKirim = $this->input->post('waktuKirim');
+      //Menyimpan data masukan pengguna dan menampilkan pesan berhasil
+			$this->Pertanyaan->saveJawaban($idPertanyaan, $idGuru, $deskripsiPertanyaan, $waktuKirim);
+      $this->session->set_flashdata('success_register','Jawaban Berhasil Dikirimkan');
+      redirect('detailPertanyaan');
+		}
+		else
+		{
+      //Data masukan pengguna belum lengkap
+			$this->session->set_flashdata('error', validation_errors());
+			redirect('detailPertanyaan');
+		}
+  }
+
+  public function sendKomentar_process()
+  {
+    //Melakukan validasi data masukan pengguna
+		$this->form_validation->set_rules('deskripsiKomentar', 'deskripsiKomentar','trim|required|min_length[1]|max_length[255]');
+		if ($this->form_validation->run() == true)
+	   	{
+      //Mengambil data masukan pengguna
+			$idJawaban = $this->input->post('idJawaban');
+      $email = $this->session->userdata('email');
+      $idGuru = $this->Pengguna->getIdByEmailGuru($email);
+      $idGuru = $this->Pengguna->getIdByEmailGuru($email);
+      $deskripsiPertanyaan = $this->input->post('deskripsiPertanyaan');
+      $waktuKirim = $this->input->post('waktuKirim');
+      //Menyimpan data masukan pengguna dan menampilkan pesan berhasil
+			$this->Pertanyaan->saveJawaban($idJawaban, $idGuru, $deskripsiPertanyaan, $waktuKirim);
+      $this->session->set_flashdata('success_register','Jawaban Berhasil Dikirimkan');
+      redirect('detailPertanyaan');
+		}
+		else
+		{
+      //Data masukan pengguna belum lengkap
+			$this->session->set_flashdata('error', validation_errors());
+			redirect('detailPertanyaan');
+		}
+  }
+
 }

@@ -79,8 +79,13 @@ class Pengguna extends CI_Model
   }
   
   //Mendapatkan id pengguna 
-  public function getIdByEmail($email) {
-    $this->db->select('idUsers');
-    return $this->db->get_where($this->table3, array('email' => $email))->row();
+  public function getIdByEmailSiswa($email) {
+    $this->db->select('idSiswa');
+    return $this->db->where($this->table2, array('email' => $email));
+  }
+
+  public function getIdByEmailGuru($email) {
+    $this->db->select('idGuru');
+    return $this->db->where($this->table1, array('email' => $email));
   }
 }

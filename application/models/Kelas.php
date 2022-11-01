@@ -4,7 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Pertanyaan extends CI_Model
 {
   protected $table1 = 'SiswaKelas';
-  protected $table2 = 'GuruKelas';
+  protected $table2 = 'PemilikKelas';
   protected $table3 = 'Kelas';
 
   public function __construct()

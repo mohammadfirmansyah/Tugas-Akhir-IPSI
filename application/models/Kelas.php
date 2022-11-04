@@ -57,11 +57,14 @@ class Pertanyaan extends CI_Model
     return $this->db->where($this->table1, array('idKelas' => $idKelas));
   }
 
-  public function deleteAnggotaKelas($idSiswa)
+  public function deleteAnggotaKelas($idKelas, $idSiswa)
   {
     return $this->db->delete(
       $this->table1,
-      array("idSiswa" => $idSiswa)
+      array(
+        "idKelas" => $idKelas,
+        "idSiswa" => $idSiswa
+      )
     );
   }
 

@@ -256,9 +256,9 @@ class Controller extends CI_Controller
     $data['Anggota_Kelas'] = $this->Kelas->getAnggotaKelas($idKelas);
   }
 
-  public function hapusAnggotaKelas_process($idSiswa)
+  public function hapusAnggotaKelas_process($idKelas, $idSiswa)
   {
-    $this->Kelas->deleteAnggotaKelas($idSiswa);
+    $this->Kelas->deleteAnggotaKelas($idKelas, $idSiswa);
     redirect("detailKelas");
   }
 

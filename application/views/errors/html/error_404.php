@@ -7,7 +7,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <head>
 	<meta charset="utf-8">
 	<link rel="icon" href="assets/images/Logo.png" type="images/png">
-	<title>Halaman tidak ditemukan - Website Desa Karangnongko Poncokusumo</title>
+	<title>Halaman tidak ditemukan - DISMA</title>
 	<style type="text/css">
 		::selection {
 			background-color: #E13300;

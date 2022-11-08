@@ -1,0 +1,396 @@
+-- phpMyAdmin SQL Dump
+-- version 5.1.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Nov 08, 2022 at 10:39 AM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 8.1.2
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+--
+-- Database: `ipsi`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `guru`
+--
+
+CREATE TABLE `guru` (
+  `idGuru` int(11) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `nip` varchar(18) NOT NULL,
+  `sekolah` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jawaban`
+--
+
+CREATE TABLE `jawaban` (
+  `idJawaban` int(11) NOT NULL,
+  `idPertanyaan` int(11) NOT NULL,
+  `idGuru` int(11) NOT NULL,
+  `namaGuru` varchar(255) NOT NULL,
+  `deskripsiJawaban` varchar(255) NOT NULL,
+  `waktuKirim` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kelas`
+--
+
+CREATE TABLE `kelas` (
+  `idKelas` int(11) NOT NULL,
+  `idGuru` int(11) NOT NULL,
+  `namaGuru` varchar(255) NOT NULL,
+  `mataPelajaran` varchar(255) NOT NULL,
+  `deskripsiKelas` varchar(255) NOT NULL,
+  `kodeKelas` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `komentar`
+--
+
+CREATE TABLE `komentar` (
+  `idKomentar` int(11) NOT NULL,
+  `idPertanyaan` int(11) NOT NULL,
+  `idAlias` int(11) NOT NULL,
+  `namaAlias` varchar(255) NOT NULL,
+  `deskripsiKomentar` varchar(255) NOT NULL,
+  `jenisKomentar` varchar(5) NOT NULL,
+  `waktuKirim` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `komentarguru`
+--
+
+CREATE TABLE `komentarguru` (
+  `idKomentarGuru` int(11) NOT NULL,
+  `idPertanyaan` int(11) NOT NULL,
+  `idGuru` int(11) NOT NULL,
+  `namaGuru` varchar(255) NOT NULL,
+  `deskripsiKomentar` varchar(255) NOT NULL,
+  `waktuKirim` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `komentarsiswa`
+--
+
+CREATE TABLE `komentarsiswa` (
+  `idKomentarSiswa` int(11) NOT NULL,
+  `idPertanyaan` int(11) NOT NULL,
+  `idSiswa` int(11) NOT NULL,
+  `namaSiswa` varchar(255) NOT NULL,
+  `deskripsiKomentar` varchar(255) NOT NULL,
+  `waktuKirim` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pemilikkelas`
+--
+
+CREATE TABLE `pemilikkelas` (
+  `idPemilikKelas` int(11) NOT NULL,
+  `idKelas` int(11) NOT NULL,
+  `idGuru` int(11) NOT NULL,
+  `namaGuru` varchar(255) NOT NULL,
+  `mataPelajaran` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pertanyaan`
+--
+
+CREATE TABLE `pertanyaan` (
+  `idPertanyaan` int(11) NOT NULL,
+  `idGuru` int(11) NOT NULL,
+  `idKelas` int(11) NOT NULL,
+  `idSiswa` int(11) NOT NULL,
+  `deskripsiPertanyaan` text NOT NULL,
+  `judulMateri` varchar(255) NOT NULL,
+  `waktuKirim` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `siswa`
+--
+
+CREATE TABLE `siswa` (
+  `idSiswa` int(11) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `nisn` varchar(10) NOT NULL,
+  `sekolah` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `siswakelas`
+--
+
+CREATE TABLE `siswakelas` (
+  `idSiswaKelas` int(11) NOT NULL,
+  `idSiswa` int(11) NOT NULL,
+  `idKelas` int(11) NOT NULL,
+  `namaSiswa` varchar(255) NOT NULL,
+  `mataPelajaran` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `idUser` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `hakAkses` varchar(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `guru`
+--
+ALTER TABLE `guru`
+  ADD PRIMARY KEY (`idGuru`),
+  ADD UNIQUE KEY `email` (`email`,`nip`),
+  ADD KEY `nama` (`nama`);
+
+--
+-- Indexes for table `jawaban`
+--
+ALTER TABLE `jawaban`
+  ADD PRIMARY KEY (`idJawaban`),
+  ADD KEY `idPertanyaan` (`idPertanyaan`),
+  ADD KEY `idGuru` (`idGuru`);
+
+--
+-- Indexes for table `kelas`
+--
+ALTER TABLE `kelas`
+  ADD PRIMARY KEY (`idKelas`),
+  ADD UNIQUE KEY `kodeKelas` (`kodeKelas`),
+  ADD UNIQUE KEY `kodeKelas_2` (`kodeKelas`),
+  ADD KEY `idGuru` (`idGuru`),
+  ADD KEY `mataPelajaran` (`mataPelajaran`),
+  ADD KEY `namaGuru` (`namaGuru`);
+
+--
+-- Indexes for table `komentar`
+--
+ALTER TABLE `komentar`
+  ADD PRIMARY KEY (`idKomentar`),
+  ADD KEY `idJawaban` (`idPertanyaan`),
+  ADD KEY `deskripsiKomentar` (`deskripsiKomentar`),
+  ADD KEY `waktuKirim` (`waktuKirim`),
+  ADD KEY `namaAlias` (`namaAlias`),
+  ADD KEY `idAlias` (`idAlias`);
+
+--
+-- Indexes for table `komentarguru`
+--
+ALTER TABLE `komentarguru`
+  ADD PRIMARY KEY (`idKomentarGuru`),
+  ADD KEY `idJawaban` (`idPertanyaan`),
+  ADD KEY `idGuru` (`idGuru`),
+  ADD KEY `deskripsiKomentar` (`deskripsiKomentar`),
+  ADD KEY `waktuKirim` (`waktuKirim`),
+  ADD KEY `namaGuru` (`namaGuru`);
+
+--
+-- Indexes for table `komentarsiswa`
+--
+ALTER TABLE `komentarsiswa`
+  ADD PRIMARY KEY (`idKomentarSiswa`),
+  ADD KEY `idJawaban` (`idPertanyaan`),
+  ADD KEY `idSiswa` (`idSiswa`),
+  ADD KEY `deskripsiKomentar` (`deskripsiKomentar`),
+  ADD KEY `waktuKirim` (`waktuKirim`),
+  ADD KEY `namaSiswa` (`namaSiswa`);
+
+--
+-- Indexes for table `pemilikkelas`
+--
+ALTER TABLE `pemilikkelas`
+  ADD PRIMARY KEY (`idPemilikKelas`),
+  ADD KEY `idGuru` (`idGuru`),
+  ADD KEY `namaGuru` (`namaGuru`),
+  ADD KEY `mataPelajaran` (`mataPelajaran`),
+  ADD KEY `idKelas` (`idKelas`);
+
+--
+-- Indexes for table `pertanyaan`
+--
+ALTER TABLE `pertanyaan`
+  ADD PRIMARY KEY (`idPertanyaan`),
+  ADD KEY `idGuru` (`idGuru`),
+  ADD KEY `idSiswa` (`idSiswa`),
+  ADD KEY `idKelas` (`idKelas`);
+
+--
+-- Indexes for table `siswa`
+--
+ALTER TABLE `siswa`
+  ADD PRIMARY KEY (`idSiswa`),
+  ADD UNIQUE KEY `email` (`email`,`nisn`),
+  ADD KEY `nama` (`nama`);
+
+--
+-- Indexes for table `siswakelas`
+--
+ALTER TABLE `siswakelas`
+  ADD PRIMARY KEY (`idSiswaKelas`),
+  ADD KEY `idKelas` (`idKelas`),
+  ADD KEY `namaSiswa` (`namaSiswa`),
+  ADD KEY `idSiswa` (`idSiswa`),
+  ADD KEY `idSiswa_2` (`idSiswa`),
+  ADD KEY `idKelas_2` (`idKelas`),
+  ADD KEY `namaSiswa_2` (`namaSiswa`),
+  ADD KEY `mataPelajaran` (`mataPelajaran`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`idUser`),
+  ADD UNIQUE KEY `email` (`email`),
+  ADD UNIQUE KEY `email_3` (`email`),
+  ADD KEY `email_2` (`email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `guru`
+--
+ALTER TABLE `guru`
+  MODIFY `idGuru` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `jawaban`
+--
+ALTER TABLE `jawaban`
+  MODIFY `idJawaban` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `kelas`
+--
+ALTER TABLE `kelas`
+  MODIFY `idKelas` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `komentar`
+--
+ALTER TABLE `komentar`
+  MODIFY `idKomentar` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `komentarguru`
+--
+ALTER TABLE `komentarguru`
+  MODIFY `idKomentarGuru` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `komentarsiswa`
+--
+ALTER TABLE `komentarsiswa`
+  MODIFY `idKomentarSiswa` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `pemilikkelas`
+--
+ALTER TABLE `pemilikkelas`
+  MODIFY `idPemilikKelas` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `pertanyaan`
+--
+ALTER TABLE `pertanyaan`
+  MODIFY `idPertanyaan` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `siswa`
+--
+ALTER TABLE `siswa`
+  MODIFY `idSiswa` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `siswakelas`
+--
+ALTER TABLE `siswakelas`
+  MODIFY `idSiswaKelas` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `komentar`
+--
+ALTER TABLE `komentar`
+  ADD CONSTRAINT `komentar_ibfk_1` FOREIGN KEY (`idPertanyaan`) REFERENCES `pertanyaan` (`idPertanyaan`);
+
+--
+-- Constraints for table `komentarguru`
+--
+ALTER TABLE `komentarguru`
+  ADD CONSTRAINT `komentarguru_ibfk_2` FOREIGN KEY (`idPertanyaan`) REFERENCES `pertanyaan` (`idPertanyaan`),
+  ADD CONSTRAINT `komentarguru_ibfk_3` FOREIGN KEY (`idGuru`) REFERENCES `guru` (`idGuru`);
+
+--
+-- Constraints for table `komentarsiswa`
+--
+ALTER TABLE `komentarsiswa`
+  ADD CONSTRAINT `komentarsiswa_ibfk_2` FOREIGN KEY (`idPertanyaan`) REFERENCES `pertanyaan` (`idPertanyaan`),
+  ADD CONSTRAINT `komentarsiswa_ibfk_3` FOREIGN KEY (`idSiswa`) REFERENCES `siswa` (`idSiswa`);
+
+--
+-- Constraints for table `siswakelas`
+--
+ALTER TABLE `siswakelas`
+  ADD CONSTRAINT `siswakelas_ibfk_1` FOREIGN KEY (`idKelas`) REFERENCES `kelas` (`idKelas`),
+  ADD CONSTRAINT `siswakelas_ibfk_2` FOREIGN KEY (`idSiswa`) REFERENCES `siswa` (`idSiswa`),
+  ADD CONSTRAINT `siswakelas_ibfk_4` FOREIGN KEY (`namaSiswa`) REFERENCES `siswa` (`nama`);
+COMMIT;

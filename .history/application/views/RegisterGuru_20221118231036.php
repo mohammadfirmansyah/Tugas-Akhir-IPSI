@@ -52,34 +52,29 @@
         <div class="col-12 col-md-8 col-lg-6 col-xl-5">
           <div class="card" style="background: transparent; border-color: transparent;" data-aos="fade-up" data-aos-delay="200">
             <div class="card-body p-5 text-center">
-              <h1 class="pb-3">+?</h1>
-              <h2 class="mb-4" style="font-size: 15px;">Sampaikan Pertanyaan Anda Dengan Mengisikan Kolom Dibawah Ini</h2>
-              <form enctype="multipart/form-data" action="<?php echo base_url('addPertanyaan_process'); ?>" method="post">
+              <h1 style="font-size: 32px; line-height: 10px;">DAFTAR SEBAGAI</h1> <br>
+              <h1 class="pb-5">GURU</h1>
+              <form enctype="multipart/form-data" action="<?php echo base_url('registerGuru_process'); ?>" method="post">
                 <?php if ($this->session->flashdata('error')) { ?>
                 <?php echo $this->session->flashdata('error');
                 } ?>
                 <div class="form-outline mb-4">
-                  <select id="idGuru" name="idGuru" class="form-control form-control-lg" style="background: #224957; border-color: #224957; color: #fff;">
-                    <option option disabled selected>Pilih Guru*</option>
-                    <?php
-                    foreach ($List_Kelas as $rowIdKelas) :
-                      $Detail_Kelas = $this->Kelas->getAllGuruMPSiswa($rowIdKelas->idKelas);
-                      foreach ($Detail_Kelas as $rowGuru) : ?>
-                        <option class="chooseOption" value="<?php echo $rowGuru->idGuru; ?>"><?php echo $rowGuru->namaGuru; ?> (<?php echo $rowGuru->mataPelajaran; ?>)
-                      <input type="hidden" id="idKelas" name="idKelas" value="<?php echo $rowIdKelas->idKelas; ?>">
-                      </option>
-                    <?php
-                      endforeach;
-                    endforeach; ?>
-                  </select>
+                  <input type="text" id="nama" name="nama" class="form-control form-control-lg" placeholder="Nama*" style="background: #224957; border-color: #224957; color: #fff;" />
                 </div>
                 <div class="form-outline mb-4">
-                  <input type="text" id="judulMateri" name="judulMateri" class="form-control form-control-lg" placeholder="Judul Materi*" style="background: #224957; border-color: #224957; color: #fff;" />
+                  <input type="email" id="email" name="email" class="form-control form-control-lg" placeholder="Email*" style="background: #224957; border-color: #224957; color: #fff;" />
                 </div>
                 <div class="form-outline mb-4">
-                  <textarea id="deskripsiPertanyaan" name="deskripsiPertanyaan" class="form-control form-control-lg" placeholder="Deskripsi Pertanyaan*" style="background: #224957; border-color: #224957; color: #fff; min-height: 200px; resize: none;"></textarea>
+                  <input type="password" id="password" name="password" class="form-control form-control-lg" placeholder="Password*" style="background: #224957; border-color: #224957; color: #fff;" />
                 </div>
-                <button class="btn-get-started_a btn-lg btn-block" type="submit" style="border-radius: 10px; width: 100%; height: 60px; text-align: center; line-height : 35px; border-color: transparent;">Kirim Pertanyaan</button>
+                <div class="form-outline mb-4">
+                  <input type="text" pattern="\d*" maxlength="18" id="nip" name="nip" class="form-control form-control-lg" placeholder="NIP*" style="background: #224957; border-color: #224957; color: #fff;" />
+                </div>
+                <div class="form-outline mb-4">
+                  <input type="text" id="sekolah" name="sekolah" class="form-control form-control-lg" placeholder="Sekolah*" style="background: #224957; border-color: #224957; color: #fff;" />
+                </div>
+
+                <button class="btn-get-started_a btn-lg btn-block" type="submit" style="border-radius: 10px; width: 100%; height: 60px; text-align: center; line-height : 35px; border-color: transparent;">Daftar</button>
               </form>
             </div>
           </div>

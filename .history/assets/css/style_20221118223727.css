@@ -2233,22 +2233,9 @@
                                             background: rgb(255, 255, 255, 0.2);
                                             border-radius: 15px;
                                             box-shadow: inset 0 0 5px rgb(0, 0, 0, 0.5);
-                                            transition: 0.5;
                                         }
                                         /* Handle on hover */
                                         
                                          ::-webkit-scrollbar-thumb:hover {
-                                            transition: 0.5;
-                                            background: rgb(11, 68, 74, 0.2);
-                                            box-shadow: none;
-                                        }
-                                        
-                                        .form-outline *::-webkit-scrollbar-thumb:hover {
-                                            transition: 0.5;
-                                            background: rgba(194, 194, 194, 0.2);
-                                            box-shadow: none;
-                                        }
-                                        
-                                        .chooseOption:hover {
-                                            background-color: #0B444A;
+                                            background: rgba(194, 194, 194, 0.5);
                                         }

@@ -65,7 +65,7 @@
                     foreach ($List_Kelas as $rowIdKelas) :
                       $Detail_Kelas = $this->Kelas->getAllGuruMPSiswa($rowIdKelas->idKelas);
                       foreach ($Detail_Kelas as $rowGuru) : ?>
-                        <option class="chooseOption" value="<?php echo $rowGuru->idGuru; ?>"><?php echo $rowGuru->namaGuru; ?> (<?php echo $rowGuru->mataPelajaran; ?>)
+                        <option class="option" value="<?php echo $rowGuru->idGuru; ?>"><?php echo $rowGuru->namaGuru; ?> (<?php echo $rowGuru->mataPelajaran; ?>)
                       <input type="hidden" id="idKelas" name="idKelas" value="<?php echo $rowIdKelas->idKelas; ?>">
                       </option>
                     <?php

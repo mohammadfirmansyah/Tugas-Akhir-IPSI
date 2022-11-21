@@ -1904,7 +1904,14 @@
                                             width: 100%;
                                             z-index: 0;
                                             background: transparent;
-                                            pointer-events: none;
+                                        }
+                                        
+                                        #footwave*:not(#footer) {
+                                            position: fixed !important;
+                                            bottom: 0;
+                                            width: 100%;
+                                            z-index: 0;
+                                            background: transparent;
                                         }
                                         
                                         #footer {
@@ -2080,7 +2087,6 @@
                                         
                                         #footer .credits a {
                                             transition: 0.3s;
-                                            pointer-events: fill;
                                         }
                                         
                                         @media (max-width: 768px) {

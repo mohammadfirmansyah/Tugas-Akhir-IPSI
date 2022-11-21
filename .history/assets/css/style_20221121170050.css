@@ -1913,6 +1913,7 @@
                                             position: absolute;
                                             bottom: 0;
                                             width: 100%;
+                                            pointer-events: none;
                                         }
                                         
                                         #footer .footer-newsletter {
@@ -2080,7 +2081,6 @@
                                         
                                         #footer .credits a {
                                             transition: 0.3s;
-                                            pointer-events: fill;
                                         }
                                         
                                         @media (max-width: 768px) {

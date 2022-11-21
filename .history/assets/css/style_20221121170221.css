@@ -2071,16 +2071,17 @@
                                         
                                         #footer .copyright {
                                             float: left;
+                                            pointer-events: fill;
                                         }
                                         
                                         #footer .credits {
                                             float: right;
                                             font-size: 13px;
+                                            pointer-events: fill;
                                         }
                                         
                                         #footer .credits a {
                                             transition: 0.3s;
-                                            pointer-events: fill;
                                         }
                                         
                                         @media (max-width: 768px) {

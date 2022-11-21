@@ -1904,7 +1904,6 @@
                                             width: 100%;
                                             z-index: 0;
                                             background: transparent;
-                                            pointer-events: none;
                                         }
                                         
                                         #footer {
@@ -2067,6 +2066,7 @@
                                             padding-top: 30px;
                                             padding-bottom: 30px;
                                             color: #fff;
+                                            pointer-events: none
                                         }
                                         
                                         #footer .copyright {
@@ -2080,7 +2080,6 @@
                                         
                                         #footer .credits a {
                                             transition: 0.3s;
-                                            pointer-events: fill;
                                         }
                                         
                                         @media (max-width: 768px) {

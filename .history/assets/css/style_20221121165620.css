@@ -2080,7 +2080,6 @@
                                         
                                         #footer .credits a {
                                             transition: 0.3s;
-                                            pointer-events: fill;
                                         }
                                         
                                         @media (max-width: 768px) {

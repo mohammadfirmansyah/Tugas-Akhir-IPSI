@@ -1902,9 +1902,8 @@
                                             position: fixed !important;
                                             bottom: 0;
                                             width: 100%;
-                                            z-index: 0;
+                                            z-index: -1;
                                             background: transparent;
-                                            pointer-events: none;
                                         }
                                         
                                         #footer {
@@ -2080,7 +2079,6 @@
                                         
                                         #footer .credits a {
                                             transition: 0.3s;
-                                            pointer-events: fill;
                                         }
                                         
                                         @media (max-width: 768px) {
